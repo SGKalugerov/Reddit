@@ -1,0 +1,21 @@
+﻿@using Reddit.Models
+@model CreateTopicViewModel
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <section id="postForm">
+            @using (Html.BeginForm("CreateTopic", "Home", FormMethod.Post, new {@class = "form-horizontal", role = "form" }))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Name, new { @class = "control-label"})
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control"})                    
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Content, new { @class = "control-label" })
+                    @Html.TextAreaFor(x => x.Content, new { @class = "form-control", @rows = "8" })
+                </div>
+                <button type="submit" class="btn btn-block btn-primary">Post Topic</button>                
+            }
+        </section>
+    </div>
+</div>

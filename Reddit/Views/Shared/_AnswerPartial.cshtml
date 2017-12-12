@@ -1,0 +1,12 @@
+﻿@using Reddit.Models
+@model AnswerViewModel
+
+@using (Html.BeginForm("PostReply", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{    
+    <div class="form-group">
+        @Html.LabelFor(x => x.Comment, new { @class = "control-label" })
+        @Html.TextAreaFor(x => x.Comment, new { @class = "form-control", @rows = "8" })
+    </div>  
+    @Html.Hidden("TopicId", int.Parse((string)Url.RequestContext.RouteData.Values["id"]))
+    <button type="submit" class="btn btn-block btn-primary">Reply</button>
+}

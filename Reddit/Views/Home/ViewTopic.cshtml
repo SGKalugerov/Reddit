@@ -1,0 +1,49 @@
+﻿@using Reddit.Models
+@using System.Globalization
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="page-header text-center">
+            <h3 class="inline">@Model.Name</h3>
+            @if (Model.Author == User.Identity.Name)
+            {
+                <button class="btn btn-warning">Edit</button>
+            }
+        </div>
+        <div class="list-group">
+            @foreach (Comment comment in Model.Comments)
+            {
+                <div class="list-group-item">
+                    <h4 class="list-group-item-heading inline">
+                        @comment.Author,
+                        @comment.Date.ToString("dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture)
+                    </h4>
+                    @if (comment.Author == User.Identity.Name)
+                    {
+                        using (Html.BeginForm("EditReply", "Home", FormMethod.Get, new { @class = "inline", role = "form" }))
+                        {
+                            @Html.Hidden("TopicId", int.Parse((string)Url.RequestContext.RouteData.Values["id"]))
+                            @Html.Hidden("CommentId", comment.Id)
+                            <button class="btn btn-warning">Edit</button>
+                        }
+                    }
+
+                    @if (Model.Author == User.Identity.Name)
+                    {
+                        using (@Html.BeginForm("DeleteReply", "Home", FormMethod.Post, new { @class = "inline", role = "form" }))
+                        {
+                            @Html.Hidden("TopicId", int.Parse((string)Url.RequestContext.RouteData.Values["id"]))
+                            @Html.Hidden("CommentId", comment.Id)
+                            <button class="btn btn-danger">Delete</button>
+                        }
+                    }
+                    <p class="list-group-item-text">@comment.Content</p>
+                </div>
+            }
+        </div>
+        @if (Request.IsAuthenticated)
+        {
+            @Html.Partial("_AnswerPartial", new AnswerViewModel())
+        }
+    </div>
+</div>

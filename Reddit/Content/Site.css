@@ -1,0 +1,19 @@
+﻿body {
+    padding-top: 70px;
+    padding-bottom: 20px;
+}
+a.hover {
+    text-decoration: none;
+}
+.inline {
+    display: inline;
+}
+.list-group-item {
+    padding: 1em 1.5em;
+}
+.list-item-group-heading {
+    margin-bottom: 1em;
+}
+.list-group-item-text {
+    white-space: pre-wrap;
+}
