@@ -8,9 +8,15 @@
             {               
                 @Html.HiddenFor(model => model.Id);
                 @Html.HiddenFor(model => model.Author);
+                <img src='http://blog.mundoedu.com.br/wp-content/uploads/2015/11/Emoji-Smiley-18-e1447436577594.png'
+                     class='icon'
+                     data-icon=':)'>
+                <img src='https://i5.walmartimages.com/asr/9d0d672d-3226-422d-a97f-e81c202d23a7_1.d7b455f6b055892a57f512f1ef6e8535.jpeg?odnHeight=30&odnWidth=30&odnBg=ffffff'
+                     class='icon'
+                     data-icon=':s'>
                 <div class="form-group">
                     @Html.LabelFor(x => x.Content, new { @class = "control-label" })
-                    @Html.TextAreaFor(x => x.Content, new { @class = "form-control", @rows = "8" })
+                    @Html.TextAreaFor(x => x.Content, new { @class = "form-control", @rows = "8", id = "content" })
                 </div>
                 <button type="submit" class="btn btn-block btn-primary" onclick="return confirm('Are you sure you wish to edit this comment ? Edited comments cannot be restored.')">Post Changes</button>
             }
