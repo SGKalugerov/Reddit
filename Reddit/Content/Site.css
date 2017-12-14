@@ -17,3 +17,7 @@ a.hover {
 .list-group-item-text {
     white-space: pre-wrap;
 }
+.icon {
+    cursor: pointer;
+    width: 30px;
+}

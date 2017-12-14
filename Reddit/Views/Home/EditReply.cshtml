@@ -12,7 +12,7 @@
                     @Html.LabelFor(x => x.Content, new { @class = "control-label" })
                     @Html.TextAreaFor(x => x.Content, new { @class = "form-control", @rows = "8" })
                 </div>
-                <button type="submit" class="btn btn-block btn-primary">Post Changes</button>
+                <button type="submit" class="btn btn-block btn-primary" onclick="return confirm('Are you sure you wish to edit this comment ? Edited comments cannot be restored.')">Post Changes</button>
             }
         </section>
     </div>

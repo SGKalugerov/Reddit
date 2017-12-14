@@ -4,17 +4,23 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <section id="postForm">
-            @using (Html.BeginForm("CreateTopic", "Home", FormMethod.Post, new {@class = "form-horizontal", role = "form" }))
+            @using (Html.BeginForm("CreateTopic", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 <div class="form-group">
-                    @Html.LabelFor(x => x.Name, new { @class = "control-label"})
-                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control"})                    
+                    @Html.LabelFor(x => x.Name, new { @class = "control-label" })
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
                 </div>
+                <img src='http://blog.mundoedu.com.br/wp-content/uploads/2015/11/Emoji-Smiley-18-e1447436577594.png'
+                     class='icon'
+                     data-icon=':)'>
+                <img src='https://i5.walmartimages.com/asr/9d0d672d-3226-422d-a97f-e81c202d23a7_1.d7b455f6b055892a57f512f1ef6e8535.jpeg?odnHeight=30&odnWidth=30&odnBg=ffffff'
+                     class='icon'
+                     data-icon=':s'>
                 <div class="form-group">
                     @Html.LabelFor(x => x.Content, new { @class = "control-label" })
-                    @Html.TextAreaFor(x => x.Content, new { @class = "form-control", @rows = "8" })
+                    @Html.TextAreaFor(x => x.Content, new { @class = "form-control", @rows = "8", id = "content" })
                 </div>
-                <button type="submit" class="btn btn-block btn-primary">Post Topic</button>                
+                <button type="submit" class="btn btn-block btn-primary">Post Topic</button>
             }
         </section>
     </div>

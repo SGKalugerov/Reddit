@@ -3,9 +3,21 @@
 
 @using (Html.BeginForm("PostReply", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {    
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(document.ready(function () {
+            $(".button").mouseover(function () {
+                var color = $(this).css({ 'background-color': '#F00' }) });
+    </script>
+    <img src='http://blog.mundoedu.com.br/wp-content/uploads/2015/11/Emoji-Smiley-18-e1447436577594.png'
+         class='icon'
+         data-icon=':)'>
+    <img src='https://i5.walmartimages.com/asr/9d0d672d-3226-422d-a97f-e81c202d23a7_1.d7b455f6b055892a57f512f1ef6e8535.jpeg?odnHeight=30&odnWidth=30&odnBg=ffffff'
+         class='icon'
+         data-icon=':s'>
     <div class="form-group">
         @Html.LabelFor(x => x.Comment, new { @class = "control-label" })
-        @Html.TextAreaFor(x => x.Comment, new { @class = "form-control", @rows = "8" })
+        @Html.TextAreaFor(x => x.Comment, new { @class = "form-control", @rows = "8", id = "content" })
     </div>  
     @Html.Hidden("TopicId", int.Parse((string)Url.RequestContext.RouteData.Values["id"]))
     <button type="submit" class="btn btn-block btn-primary">Reply</button>

@@ -4,11 +4,7 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <div class="page-header text-center">
-            <h3 class="inline">@Model.Name</h3>
-            @if (Model.Author == User.Identity.Name)
-            {
-                <button class="btn btn-warning">Edit</button>
-            }
+            <h3 class="inline">@Model.Name</h3>      
         </div>
         <div class="list-group">
             @foreach (Comment comment in Model.Comments)
@@ -34,7 +30,7 @@
                         {
                             @Html.Hidden("TopicId", int.Parse((string)Url.RequestContext.RouteData.Values["id"]))
                             @Html.Hidden("CommentId", comment.Id)
-                            <button class="btn btn-danger">Delete</button>
+                            <button class="btn btn-danger" onclick="return confirm('Are you sure you wish to delete this comment ? Deleted comments cannot be restored.')">Delete</button>
                         }
                     }
                     <p class="list-group-item-text">@comment.Content</p>
