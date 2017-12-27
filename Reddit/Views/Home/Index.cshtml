@@ -16,7 +16,7 @@
                 @foreach(var topic in Model)
                 {
                     <tr>
-                        <td>@Html.ActionLink((string)topic.Name, "ViewTopic", "Home", new { @id = topic.Id }, null)</td>
+                        <td>@Html.ActionLink((string)topic.Name, "ViewTopic", "Home", new { topicId = topic.Id }, null)</td>
                         <td>by <em>@topic.Author</em></td>
                         <td>Created on <small>@topic.Date.ToString("dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture)</small></td>
                     </tr>

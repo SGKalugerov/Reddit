@@ -19,6 +19,5 @@
         @Html.LabelFor(x => x.Comment, new { @class = "control-label" })
         @Html.TextAreaFor(x => x.Comment, new { @class = "form-control", @rows = "8", id = "content" })
     </div>  
-    @Html.Hidden("TopicId", int.Parse((string)Url.RequestContext.RouteData.Values["id"]))
     <button type="submit" class="btn btn-block btn-primary">Reply</button>
 }

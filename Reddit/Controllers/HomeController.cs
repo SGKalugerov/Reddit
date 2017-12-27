@@ -55,21 +55,20 @@
             return View(comment);
         }
 
-        public ActionResult ViewTopic()
-        {
-            int.TryParse((string)Url.RequestContext.RouteData.Values["id"], out int topicId);
+        public ActionResult ViewTopic(int topicId)
+        {           
             Topic topic = db.Topics.Find(topicId);
             if (topic != null)
             {
                 return View(topic);
             }
+
             return RedirectToAction("Index");
         }
 
         [HttpPost]
         public ActionResult PostReply(AnswerViewModel model, int topicId)
-        {
-            //int topicId = int.Parse(Request.QueryString["topicId"]);         
+        {              
             Topic topic = db.Topics.Find(topicId);
 
             topic.Comments.Add(new Comment
@@ -83,10 +82,8 @@
         }
 
         [HttpPost]
-        public ActionResult DeleteReply(AnswerViewModel model)
-        {
-            int topicId = int.Parse(Request.Form["TopicId"]);
-            int commentId = int.Parse(Request.Form["CommentId"]);
+        public ActionResult DeleteReply(AnswerViewModel model, int topicId, int commentId)
+        {        
             Topic topic = db.Topics.Find(topicId);
             Comment comment = topic.Comments.Find(x => x.Id == commentId);
 
@@ -96,7 +93,11 @@
                 db.Topics.Remove(topic);
             }
             db.SaveChanges();
-
+           
+            if(topic.Comments.Count == 0)
+            {
+                return RedirectToAction("Index");
+            }
             return RedirectToAction("ViewTopic", new { id = topicId });
         }
 
